@@ -4,7 +4,7 @@ import fnmatch
 # ROOT_PATH = r"D:\gachon\manifest-1654812109500\Duke-Breast-Cancer-MRI"
 ROOT_PATH = r"D:\gachon\selected_patients"
 OUT_PATH = r"D:\gachon\proj_tree5.txt"
-MAX_DEPTH = 4  # 최대 깊이
+MAX_DEPTH = 4  # 폴더 안으로 몇단계 까지 들어갈건지 지정 변수
 EXCLUDES = [".git", "__pycache__"]
 FOLLOW_SYMLINKS = False
 
