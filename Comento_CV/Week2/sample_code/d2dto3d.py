@@ -1,6 +1,5 @@
 # Week 2: 2D 이미지에서 3D 포인트 클라우드 생성
 # 이 코드는 OpenCV와 Matplotlib를 사용하여 2D 이미지를 3D 포인트 클라우드로 변환하고 시각화하는 코드입니다.
-
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
