@@ -1,3 +1,4 @@
+# 2D 흑백 이미지를 3D 표면으로 변환 및 시각화하는 코드입니다.
 import os
 import cv2
 import numpy as np
