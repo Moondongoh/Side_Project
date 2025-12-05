@@ -1,6 +1,6 @@
 # Week 1: 이미지 전처리 및 시각화
 # 이 코드는 OpenCV를 사용하여 이미지에서 특정 색상을 검출하고 시각화하는 코드입니다.
-
+# ✅실행결과: 빨간색영역이검출되며, 다른색상은제거된상태로표시됨
 import cv2
 import numpy as np
 import os
@@ -66,5 +66,3 @@ cv2.imshow("Blue", result_blue)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-
-# ✅실행결과: 빨간색영역이검출되며, 다른색상은제거된상태로표시됨
