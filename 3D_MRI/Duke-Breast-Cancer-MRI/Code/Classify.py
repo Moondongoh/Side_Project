@@ -2,9 +2,9 @@ import pandas as pd
 import os
 import shutil
 
-excel_path = r"D:\gachon\Features.xlsx"
-src_root = r"D:\gachon\cropped_roi_images"
-dst_root = r"D:\gachon\selected_patients"
+excel_path = r"경로지정"
+src_root = r"경로지정"
+dst_root = r"경로지정"
 
 df = pd.read_excel(excel_path)
 
