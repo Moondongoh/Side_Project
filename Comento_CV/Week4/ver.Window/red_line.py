@@ -1,6 +1,5 @@
 # week4
 # HSV를 이용하여 입력 이미지에서 빨간색 선을 탐지하고 L9110 모터를 이용해 선을 따라 움직임을 구현하였습니다.
-
 import cv2 as cv
 import numpy as np
 import time
