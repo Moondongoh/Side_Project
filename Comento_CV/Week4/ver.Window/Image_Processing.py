@@ -1,6 +1,5 @@
 # week4 Image Processing
 # OpenCV를 사용하여 이미지에서 차선을 감지하는 코드입니다.
-
 import cv2 as cv
 import numpy as np
 
