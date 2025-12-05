@@ -289,7 +289,7 @@ class RedLineDetector:
                 contours = [
                     np.array(contour, dtype=np.int32) for contour in result["contours"]
                 ]
-                # ROI 오프셋 적용
+                # ROI 적용
                 offset_contours = []
                 for contour in contours:
                     offset_contour = contour.copy()
