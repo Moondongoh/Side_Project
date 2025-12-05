@@ -1,6 +1,5 @@
 # Week 3: 객체 탐지 모델 추론 및 시각화
 # 이 코드는 YOLOv8 모델을 사용하여 객체 탐지를 수행하고 결과를 시각화하는 코드입니다.
-
 import cv2
 from ultralytics import YOLO
 

@@ -1,6 +1,5 @@
 # Week 3: YOLOv8 모델 학습
 # 이 코드는 YOLOv8 모델을 학습시키는 코드입니다.
-
 from ultralytics import YOLO
 import torch
 

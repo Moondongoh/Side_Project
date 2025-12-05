@@ -20,7 +20,6 @@
 
 # Week 3: YOLOv8 모델 학습 및 평가 시각화
 # 이 코드는 전체 학습이 기록된 result.csv파일을(그래프로) 시각화하는 코드입니다.
-
 import pandas as pd
 import matplotlib.pyplot as plt
 
