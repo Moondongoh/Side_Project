@@ -85,5 +85,5 @@ cv2.findContours()로 객체의 외곽선(contour) 들을 찾습니다.
 
 https://velog.io/@mdo0421/1%EC%A3%BC%EC%B0%A8ComentoCV 1주차 벨로그 정리
 
-https://velog.io/@mdo0421/1%EC%A3%BC%EC%B0%A8ComentoCV%EB%B8%8C%EB%9E%9C%EC%B9%98-%EB%B0%8F-PRPull-Request 1주차 업무 피드백 적용 정리
+https://velog.io/@mdo0421/1%EC%A3%BC%EC%B0%A8ComentoCV%EB%B8%8C%EB%9E%9C%EC%B9%98-%EB%B0%8F-PRPull-Request 1주차 업무 피드백 적용 정리 블로그
 ===============================================================================================================================================
