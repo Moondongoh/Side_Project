@@ -32,5 +32,5 @@ inference.py : 학습된 모델을 이용해서 테스트 입력 데이터의 �
 
 Visualization_Evaluation.py : 모델의 성능 지표를 확인할 수 있는 코드입니다.
 
-https://velog.io/@mdo0421/3%EC%A3%BC%EC%B0%A8ComentoCVAI-%EA%B8%B0%EB%B0%98-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%AA%A8%EB%8D%B8%EB%A7%81%EB%B0%8FOpenCV%EB%A5%BC%ED%99%9C%EC%9A%A9%ED%95%9C%EA%B2%B0%EA%B3%BC%EC%8B%9C%EA%B0%81%ED%99%94 3주차 벨로그 정리 블로그
+https://velog.io/@mdo0421/3%EC%A3%BC%EC%B0%A8ComentoCVAI-%EA%B8%B0%EB%B0%98-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%AA%A8%EB%8D%B8%EB%A7%81%EB%B0%8FOpenCV%EB%A5%BC%ED%99%9C%EC%9A%A9%ED%95%9C%EA%B2%B0%EA%B3%BC%EC%8B%9C%EA%B0%81%ED%99%94 3주차 벨로그 정리
 ===============================================================================================================================================
