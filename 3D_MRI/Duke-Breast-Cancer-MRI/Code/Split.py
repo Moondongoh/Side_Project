@@ -2,8 +2,8 @@ import os
 import shutil
 import random
 
-IMG_ROOT = r"D:\gachon\selected_patients"
-OUT_ROOT = r"D:\gachon\split_6_2_2"
+IMG_ROOT = r"경로지정"
+OUT_ROOT = r"경로지정"
 SEED = 42
 
 TRAIN_RATIO = 0.6
