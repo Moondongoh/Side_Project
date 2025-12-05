@@ -1,6 +1,5 @@
 # week4
 # HSV를 이용하여 입력 이미지에서 빨간색 선을 탐지하고, 결과를 시각화하는 코드입니다.
-
 import cv2 as cv
 import numpy as np
 import logging
