@@ -1,5 +1,5 @@
 # Week 1: 이미지 전처리 및 시각화
-# 이 코드는 OpenCV를 사용하여 다양한 이미지 증강을 해본 코드입니다.
+# 이 코드는 OpenCV를 사용하여 다양한 이미지 증강한 코드입니다.
 
 import os
 import torch
