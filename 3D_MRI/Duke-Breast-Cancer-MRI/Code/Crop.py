@@ -6,9 +6,9 @@ import numpy as np
 import pandas as pd
 import pydicom
 
-BASE_DATA_PATH = r"D:\gachon\manifest-1654812109500\Duke-Breast-Cancer-MRI"
-ANNOTATION_FILE_PATH = r"D:\gachon\Annotation_Boxes.xlsx"
-OUTPUT_DIR = r"D:\gachon\cropped_roi_images3"
+BASE_DATA_PATH = r"경로지정"
+ANNOTATION_FILE_PATH = r"경로지정"
+OUTPUT_DIR = r"경로지정"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 INCLUSIVE_COORDS = True
