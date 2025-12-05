@@ -20,5 +20,5 @@ red_line.py : 웹캠을 통해서 얻은 실시간 영상을 빨간색 선을 �
 image.py : 사용법[python image.py ./image/red_line1.jpg true true], 입력 이미지에서 빨간색 라인을 탐지 합니다.
 
 
-https://velog.io/@mdo0421/3%EC%A3%BC%EC%B0%A8ComentoCV%ED%9D%AC%EB%A7%9D%ED%95%98%EB%8A%94-%EC%A0%9C%ED%92%88-%EB%98%90%EB%8A%94-SW-%EC%84%A0%EC%A0%95-%ED%9B%84-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B8%B0%ED%9A%8D-%EB%B0%8F-%EC%8B%A4%ED%96%89
+https://velog.io/@mdo0421/3%EC%A3%BC%EC%B0%A8ComentoCV%ED%9D%AC%EB%A7%9D%ED%95%98%EB%8A%94-%EC%A0%9C%ED%92%88-%EB%98%90%EB%8A%94-SW-%EC%84%A0%EC%A0%95-%ED%9B%84-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B8%B0%ED%9A%8D-%EB%B0%8F-%EC%8B%A4%ED%96%89 4주차 벨로그 정리
 ===============================================================================================================================================
