@@ -375,6 +375,7 @@
 # if __name__ == "__main__":
 #     main()
 
+# ==========================================================================================================
 
 import os
 import glob
@@ -385,7 +386,13 @@ import cv2
 import numpy as np
 import pandas as pd
 
-from sklearn.metrics import accuracy_score, f1_score, roc_auc_score, confusion_matrix, classification_report
+from sklearn.metrics import (
+    accuracy_score,
+    f1_score,
+    roc_auc_score,
+    confusion_matrix,
+    classification_report,
+)
 
 import torch
 import torch.nn as nn
@@ -466,8 +473,15 @@ class SliceDataset(Dataset):
         return x, label, row["patient_id"], path
 
 
-def make_loader(df_rows, bs=64, aug=False, shuffle=False,
-                num_workers=0, pin_memory=False, img_size=224):
+def make_loader(
+    df_rows,
+    bs=64,
+    aug=False,
+    shuffle=False,
+    num_workers=0,
+    pin_memory=False,
+    img_size=224,
+):
 
     ds = SliceDataset(df_rows, aug=aug, img_size=img_size)
     return DataLoader(
@@ -517,7 +531,12 @@ def run_epoch(model, loader, criterion, optimizer, device, train=True):
         ys_all.extend(y.cpu().numpy().tolist())
         pids_all.extend(list(pids))
 
-    return float(np.mean(losses)), np.array(probs_all), np.array(ys_all), np.array(pids_all)
+    return (
+        float(np.mean(losses)),
+        np.array(probs_all),
+        np.array(ys_all),
+        np.array(pids_all),
+    )
 
 
 # =========================
@@ -531,12 +550,10 @@ class SmallCNN(nn.Module):
             nn.BatchNorm2d(32),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(2),
-
             nn.Conv2d(32, 64, kernel_size=3, padding=1),
             nn.BatchNorm2d(64),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(2),
-
             nn.Conv2d(64, 128, kernel_size=3, padding=1),
             nn.BatchNorm2d(128),
             nn.ReLU(inplace=True),
@@ -546,11 +563,9 @@ class SmallCNN(nn.Module):
             nn.Linear(128 * 28 * 28, 256),
             nn.ReLU(inplace=True),
             nn.Dropout(0.5),
-
             nn.Linear(256, 64),
             nn.ReLU(inplace=True),
             nn.Dropout(0.5),
-
             nn.Linear(64, num_classes),
         )
 
@@ -591,15 +606,15 @@ def attach_labels(df_manifest, df_label_map):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--train_root", default=r"D:\gachon\split_6_2_2_2\train")
-    parser.add_argument("--val_root",   default=r"D:\gachon\split_6_2_2_2\val")
-    parser.add_argument("--test_root",  default=r"D:\gachon\split_6_2_2_2\test")
+    parser.add_argument("--val_root", default=r"D:\gachon\split_6_2_2_2\val")
+    parser.add_argument("--test_root", default=r"D:\gachon\split_6_2_2_2\test")
     parser.add_argument("--label_xlsx", default=r"D:\gachon\Features.xlsx")
-    parser.add_argument("--out_dir",    default=r"D:\gachon\exp_no_weights")
-    parser.add_argument("--model",      default="smallcnn", choices=["smallcnn", "resnet18"])
-    parser.add_argument("--train_bs",   type=int, default=64)
-    parser.add_argument("--val_bs",     type=int, default=128)
-    parser.add_argument("--test_bs",    type=int, default=128)
-    parser.add_argument("--lr",         type=float, default=1e-4)
+    parser.add_argument("--out_dir", default=r"D:\gachon\exp_no_weights")
+    parser.add_argument("--model", default="smallcnn", choices=["smallcnn", "resnet18"])
+    parser.add_argument("--train_bs", type=int, default=64)
+    parser.add_argument("--val_bs", type=int, default=128)
+    parser.add_argument("--test_bs", type=int, default=128)
+    parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--weight_decay", type=float, default=1e-4)
     parser.add_argument("--num_workers", type=int, default=4)
     parser.add_argument("--seed", type=int, default=42)
@@ -622,7 +637,9 @@ def main():
     df_va = attach_labels(df_va_manifest, df_label_map)
     df_te = attach_labels(df_te_manifest, df_label_map)
 
-    print(f"Patients: train {len(df_tr.patient_id.unique())}, val {len(df_va.patient_id.unique())}, test {len(df_te.patient_id.unique())}")
+    print(
+        f"Patients: train {len(df_tr.patient_id.unique())}, val {len(df_va.patient_id.unique())}, test {len(df_te.patient_id.unique())}"
+    )
     print(f"Images  : train {len(df_tr)}, val {len(df_va)}, test {len(df_te)}")
 
     def print_dist(df, name):
@@ -638,12 +655,20 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     pin = torch.cuda.is_available()
 
-    train_loader = make_loader(df_tr, args.train_bs, aug=True, shuffle=True,
-                               num_workers=args.num_workers, pin_memory=pin)
-    val_loader = make_loader(df_va, args.val_bs, aug=False,
-                             num_workers=args.num_workers, pin_memory=pin)
-    test_loader = make_loader(df_te, args.test_bs, aug=False,
-                              num_workers=args.num_workers, pin_memory=pin)
+    train_loader = make_loader(
+        df_tr,
+        args.train_bs,
+        aug=True,
+        shuffle=True,
+        num_workers=args.num_workers,
+        pin_memory=pin,
+    )
+    val_loader = make_loader(
+        df_va, args.val_bs, aug=False, num_workers=args.num_workers, pin_memory=pin
+    )
+    test_loader = make_loader(
+        df_te, args.test_bs, aug=False, num_workers=args.num_workers, pin_memory=pin
+    )
 
     # 모델 선택
     if args.model == "smallcnn":
@@ -659,19 +684,29 @@ def main():
     # --------------------------
     criterion = nn.CrossEntropyLoss()
 
-    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
-    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode="max", patience=3)
+    optimizer = torch.optim.AdamW(
+        model.parameters(), lr=args.lr, weight_decay=args.weight_decay
+    )
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode="max", patience=3
+    )
 
     best_f1 = -1
     best_path = os.path.join(args.out_dir, f"best_{args.model}.pt")
 
     for epoch in range(1, 101):
-        tr_loss, _, _, _ = run_epoch(model, train_loader, criterion, optimizer, device, train=True)
-        va_loss, va_prob, va_y, _ = run_epoch(model, val_loader, criterion, optimizer, device, train=False)
+        tr_loss, _, _, _ = run_epoch(
+            model, train_loader, criterion, optimizer, device, train=True
+        )
+        va_loss, va_prob, va_y, _ = run_epoch(
+            model, val_loader, criterion, optimizer, device, train=False
+        )
 
         va_acc, va_f1, va_auc, _ = metrics_from_probs(va_prob, va_y)
 
-        print(f"[Ep {epoch:03d}] train={tr_loss:.4f} | val={va_loss:.4f} acc={va_acc:.3f} f1={va_f1:.3f} auc={va_auc:.3f}")
+        print(
+            f"[Ep {epoch:03d}] train={tr_loss:.4f} | val={va_loss:.4f} acc={va_acc:.3f} f1={va_f1:.3f} auc={va_auc:.3f}"
+        )
 
         scheduler.step(va_f1)
 
@@ -682,7 +717,9 @@ def main():
 
     # 테스트 평가
     model.load_state_dict(torch.load(best_path, map_location=device))
-    _, te_prob, te_y, te_pid = run_epoch(model, test_loader, criterion, optimizer, device, train=False)
+    _, te_prob, te_y, te_pid = run_epoch(
+        model, test_loader, criterion, optimizer, device, train=False
+    )
 
     te_acc, te_f1, te_auc, te_pred = metrics_from_probs(te_prob, te_y)
 
@@ -693,7 +730,11 @@ def main():
 
     # 환자 레벨 평가
     df_te_pred = pd.DataFrame({"patient_id": te_pid, "y": te_y, "prob": te_prob})
-    pt_agg = df_te_pred.groupby("patient_id").agg(y=("y", "first"), prob=("prob", "mean")).reset_index()
+    pt_agg = (
+        df_te_pred.groupby("patient_id")
+        .agg(y=("y", "first"), prob=("prob", "mean"))
+        .reset_index()
+    )
 
     pt_pred = (pt_agg["prob"] >= 0.5).astype(int)
     pt_acc = accuracy_score(pt_agg["y"], pt_pred)
