@@ -5,7 +5,7 @@ import sys
 import types
 
 # ------------------------------------------------------------------
-# RPi.GPIO Mock를 *먼저* 등록해야 red_line import 시 사용됨
+# RPi.GPIO Mock를 *먼저* 등록해야 red_line import 시 사용됨.
 # ------------------------------------------------------------------
 # 패키지 stub
 mock_rpi = types.ModuleType("RPi")
