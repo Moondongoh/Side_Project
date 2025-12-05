@@ -36,6 +36,5 @@ def main():
     )
 
 
-# 이걸로 실행
 if __name__ == "__main__":
     main()
